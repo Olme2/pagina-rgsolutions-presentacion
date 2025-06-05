@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RG Solutions - Soluciones de Contacto Avanzadas</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Open+Sans:wght@400;500&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'base': '#0F172A',
+                        'section': '#1E293B',
+                        'primary': '#FFFFFF',
+                        'secondary': '#CBD5E1',
+                        'accent': '#00FFE0',
+                        'highlight': '#FF6B35',
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                        'opensans': ['Open Sans', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        'subtitle': '0.05em',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'neon-pulse': 'neonPulse 2s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        neonPulse: {
+                            '0%, 100%': { textShadow: '0 0 5px #00FFE0, 0 0 10px #00FFE0' },
+                            '50%': { textShadow: '0 0 10px #00FFE0, 0 0 20px #00FFE0' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body class="bg-base text-primary font-opensans">
+    <nav class="bg-section/80 backdrop-blur-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" class="flex items-center space-x-4">
+                    <img src="images/Logo-RG.png" alt="Logo RG Solutions" class="h-14 w-auto max-w-[80px] object-contain drop-shadow-lg">
+                    <span class="text-2xl font-poppins font-bold text-accent hover:text-accent/80 transition-colors">RG Solutions</span>
+                </a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#servicios" class="text-secondary hover:text-accent transition-colors">Servicios</a>
+                    <a href="#contacto" class="text-secondary hover:text-accent transition-colors">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="min-h-screen">
+        <!-- Hero Section -->
+        <div class="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+            <video id="hero-bg-video" class="absolute w-full h-full object-cover transition-all duration-1000" autoplay muted playsinline>
+                <source src="video/Video%20de%20WhatsApp%202025-05-27%20a%20las%2019.05.27_dd62d45e.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-black/60"></div>
+            <div id="hero-text-container" class="relative z-10 text-center px-4 max-w-screen-lg mx-auto opacity-0 pointer-events-none">
+                <h1 class="text-4xl md:text-6xl font-poppins font-bold text-white mb-6 animate-hero-fadein">
+                    <span id="typed-text"></span>
+                </h1>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <button class="neon-button px-8 py-3 text-lg bg-transparent text-white rounded-full border-2 border-accent transition-all duration-300 hover:bg-accent/10 hover:shadow-[0_0_12px_#00FFE0,0_0_24px_#00FFE0] focus:outline-none focus:ring-2 focus:ring-accent/60">
+                        Comenzar ahora
+                    </button>
+                    <button class="bg-white/10 border-2 border-white text-white px-8 py-3 text-lg rounded-lg hover:bg-white/20 transition-all">
+                        Ver demo
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección ¿Quiénes Somos? RG Solutions -->
+        <section class="py-16 bg-section/80 border-b border-accent/20" id="quienes-somos">
+            <div class="max-w-screen-lg mx-auto px-2 sm:px-4">
+                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center mb-12 text-accent">¿Quiénes Somos?</h2>
+                <div class="flex flex-col gap-12">
+                    <!-- Card 1: Izquierda -->
+                    <div class="flex justify-start">
+                        <div class="w-full md:w-[90%] lg:w-[90%] flex flex-col md:flex-row items-center bg-base rounded-2xl shadow-2xl p-12 min-h-[320px] h-auto transition-transform hover:scale-[1.025] hover:shadow-accent/40 md:ml-0 md:mr-auto" data-aos="fade-right" data-aos-duration="900">
+                            <div class="flex-1 mb-6 md:mb-0 md:mr-12 flex flex-col justify-center text-left">
+                                <h3 class="text-3xl font-bold text-accent mb-3">RG Solutions</h3>
+                                <p class="text-white/90 text-xl">Es un call center con sede en Argentina, especializado en la venta de servicios y productos.</p>
+                            </div>
+                            <div class="flex-shrink-0 flex items-center justify-center">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Call Center" class="w-40 h-40 object-contain rounded-full bg-accent/10 p-3">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2: Derecha (sin bullets, texto alineado a la izquierda) -->
+                    <div class="flex justify-end">
+                        <div class="w-full md:w-[90%] lg:w-[90%] flex flex-col md:flex-row-reverse items-center bg-base rounded-2xl shadow-2xl p-12 min-h-[320px] h-auto transition-transform hover:scale-[1.025] hover:shadow-accent/40 md:mr-0 md:ml-auto" data-aos="fade-left" data-aos-duration="900">
+                            <div class="flex-1 mb-6 md:mb-0 md:ml-12 flex flex-col justify-center text-left">
+                                <h3 class="text-2xl font-bold text-accent mb-3">Actualmente comercializamos:</h3>
+                                <p class="text-white/90 text-lg mb-2">Servicios de Cable e Internet de <strong>Supercanal</strong> <span class="text-secondary">(Top 3 en ventas a nivel nacional, presente en la mayoría de las provincias)</span>.</p>
+                                <p class="text-white/90 text-lg mb-2">Servicios de Cable e Internet de <strong>TIC</strong> <span class="text-secondary">(disponibles en Santiago del Estero)</span>.</p>
+                                <p class="text-white/90 text-lg mb-2">Servicios de Cable, Internet y Telefonía Fija de <strong>Claro</strong> <span class="text-secondary">(en La Rioja y Catamarca, con posibilidad de contratar por separado y una línea fija de regalo)</span>.</p>
+                                <p class="text-white/90 text-lg mb-2">Promociones especiales según región y compañía.</p>
+                            </div>
+                            <div class="flex-shrink-0 flex items-center justify-center">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1042/1042330.png" alt="Servicios" class="w-32 h-32 object-contain rounded-full bg-accent/10 p-3">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3: Izquierda (sin bullets) -->
+                    <div class="flex justify-start">
+                        <div class="w-full md:w-[90%] lg:w-[90%] flex flex-col md:flex-row items-center bg-base rounded-2xl shadow-2xl p-12 min-h-[320px] h-auto transition-transform hover:scale-[1.025] hover:shadow-accent/40 md:ml-0 md:mr-auto" data-aos="fade-right" data-aos-duration="900">
+                            <div class="flex-1 mb-6 md:mb-0 md:mr-12 flex flex-col justify-center text-left">
+                                <h3 class="text-2xl font-bold text-accent mb-3">Próximamente también ofreceremos productos como:</h3>
+                                <p class="text-white/90 text-lg mb-2">Electrodomésticos</p>
+                                <p class="text-white/90 text-lg mb-2">Tecnología</p>
+                                <p class="text-white/90 text-lg mb-2">Artículos para el hogar</p>
+                            </div>
+                            <div class="flex-shrink-0 flex gap-4 items-center justify-center">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1042/1042332.png" alt="Electrodomésticos" class="w-20 h-20 object-contain rounded-full bg-accent/10 p-2">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1042/1042340.png" alt="Tecnología" class="w-20 h-20 object-contain rounded-full bg-accent/10 p-2">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1042/1042342.png" alt="Hogar" class="w-20 h-20 object-contain rounded-full bg-accent/10 p-2">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 4: Derecha (texto alineado a la izquierda) -->
+                    <div class="flex justify-end">
+                        <div class="w-full md:w-[90%] lg:w-[90%] flex flex-col md:flex-row-reverse items-center bg-base rounded-2xl shadow-2xl p-12 min-h-[320px] h-auto transition-transform hover:scale-[1.025] hover:shadow-accent/40 md:mr-0 md:ml-auto" data-aos="fade-left" data-aos-duration="900">
+                            <div class="flex-1 mb-6 md:mb-0 md:ml-12 flex flex-col justify-center text-left">
+                                <h3 class="text-2xl font-bold text-accent mb-3">Nuestro equipo y objetivo</h3>
+                                <p class="text-white/90 text-xl mb-2">Contamos con un equipo de asesores entrenado para brindar atención personalizada, rápida y efectiva.</p>
+                                <p class="text-white/90 text-xl">Nuestro objetivo es conectarte con la mejor opción según tu ubicación y tus necesidades.</p>
+                            </div>
+                            <div class="flex-shrink-0 flex items-center justify-center">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Equipo" class="w-32 h-32 object-contain rounded-full bg-accent/10 p-3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servicios Section -->
+        <section class="py-20 bg-section" id="servicios">
+            <div class="max-w-screen-lg mx-auto px-4 sm:px-8">
+                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center mb-12 text-white">
+                    Nuestros Servicios
+                </h2>
+                <div class="mt-12 flex justify-center">
+                    <video class="rounded-xl shadow-lg w-full max-w-3xl" autoplay loop muted controls>
+                        <source src="video/Video%20de%20WhatsApp%202025-05-27%20a%20las%2018.28.25_ab5f648c.mp4" type="video/mp4">
+                        Tu navegador no soporta el video.
+                    </video>
+                </div>
+            </div>
+        </section>
+        <!-- Contacto Section -->
+         <section class="py-20 bg-section" id="contacto">
+            <div class="max-w-screen-lg mx-auto px-4 sm:px-8">
+                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center mb-12 text-accent">Contacto</h2>
+                <div class="text-center text-white/90">
+                    <p class="text-xl mb-4">Puedes contactarnos a través de:</p>
+                    <p class="text-lg"><i class="fas fa-envelope mr-2"></i> Email: <a href="mailto:soporte@rgsolutions.com" class="text-accent hover:underline">soporte@rgsolutions.com</a></p>
+                    <p class="text-lg"><i class="fas fa-phone mr-2"></i> Teléfono: <a href="tel:+5491112345678" class="text-accent hover:underline">+54 9 11 1234 5678</a></p>
+                    <p class="text-lg mt-4">O visitando nuestra oficina en [Dirección de ejemplo en Argentina].</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <!-- Lottie -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+
+</body>
+</html> 
