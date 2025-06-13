@@ -64,12 +64,15 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- GSAP para animaciones -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 
 </head>
-<body class="bg-base text-primary font-opensans">
+<body class="bg-background text-white">
     <nav class="bg-section/80 backdrop-blur-md fixed w-full z-50">
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
@@ -87,114 +90,713 @@
 
     <div class="min-h-screen">
         <!-- Hero Section -->
-        <div class="relative h-screen flex flex-col items-center justify-center overflow-hidden">
-            <video id="hero-bg-video" class="absolute w-full h-full object-cover transition-all duration-1000" autoplay muted playsinline>
-                <source src="video/Video%20de%20WhatsApp%202025-05-27%20a%20las%2019.05.27_dd62d45e.mp4" type="video/mp4">
+        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+            <!-- Video de fondo con overlay dinámico -->
+            <div class="absolute inset-0 w-full h-full">
+                <video class="object-cover w-full h-full" autoplay muted loop playsinline>
+                    <source src="assets/videos/hero-background.mp4" type="video/mp4">
             </video>
-            <div class="absolute inset-0 bg-black/60"></div>
-            <div id="hero-text-container" class="relative z-10 text-center px-4 max-w-screen-lg mx-auto opacity-0 pointer-events-none">
-                <h1 class="text-4xl md:text-6xl font-poppins font-bold text-white mb-6 animate-hero-fadein">
-                    <span id="typed-text"></span>
+                <!-- Overlay con gradiente dinámico -->
+                <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80"></div>
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--accent-color)_0%,_transparent_70%)] opacity-20"></div>
+            </div>
+
+            <!-- Contenido principal con efecto de parallax -->
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="max-w-5xl mx-auto text-center">
+                    <!-- Logo con efecto de entrada -->
+                    <div class="mb-12" data-aos="fade-down" data-aos-delay="200">
+                        <img src="assets/images/logo.png" alt="RG Solutions Logo" class="h-24 mx-auto transform hover:scale-105 transition-transform duration-500">
+                    </div>
+
+                    <!-- Título principal con efecto de escritura -->
+                    <div class="relative mb-8" data-aos="fade-up">
+                        <h1 class="text-6xl md:text-8xl font-serif font-bold text-white leading-tight">
+                            <span class="inline-block typewriter-text">Transformamos</span>
+                            <span class="text-accent block mt-2">Ventas B2B</span>
+                            <span class="text-accent block mt-2">en Resultados</span>
                 </h1>
-                <div class="flex flex-col md:flex-row gap-4 justify-center">
-                    <button class="neon-button px-8 py-3 text-lg bg-transparent text-white rounded-full border-2 border-accent transition-all duration-300 hover:bg-accent/10 hover:shadow-[0_0_12px_#00FFE0,0_0_24px_#00FFE0] focus:outline-none focus:ring-2 focus:ring-accent/60">
-                        Comenzar ahora
-                    </button>
-                    <button class="bg-white/10 border-2 border-white text-white px-8 py-3 text-lg rounded-lg hover:bg-white/20 transition-all">
-                        Ver demo
-                    </button>
+                        <!-- Línea decorativa animada -->
+                        <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-32 h-1 bg-accent"></div>
+                    </div>
+
+                    <!-- Subtítulo con efecto de fade -->
+                    <p class="text-2xl md:text-3xl text-gray-200 mb-16 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+                        Estrategias de ventas personalizadas que impulsan el crecimiento de tu empresa
+                    </p>
+
+                    <!-- CTA Principal con efectos avanzados -->
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center" data-aos="fade-up" data-aos-delay="200">
+                        <a href="#contacto" class="cta-primary group">
+                            <span class="relative z-10 flex items-center justify-center">
+                                <span>Agenda una Consulta Gratuita</span>
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </span>
+                            <div class="absolute inset-0 bg-accent-dark scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+                        </a>
+                        <a href="#servicios" class="cta-secondary group">
+                            <span class="flex items-center justify-center">
+                                <span>Conoce Nuestros Servicios</span>
+                                <i class="fas fa-chevron-down ml-2 group-hover:translate-y-1 transition-transform"></i>
+                            </span>
+                        </a>
+                    </div>
+
+                    <!-- Indicador de scroll con animación mejorada -->
+                    <div class="absolute bottom-12 left-1/2 -translate-x-1/2" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex flex-col items-center">
+                            <span class="text-white/60 text-sm mb-3 font-light tracking-wider">Descubre más</span>
+                            <div class="scroll-indicator">
+                                <div class="scroll-indicator-dot"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- Elementos decorativos avanzados -->
+            <div class="absolute inset-0 pointer-events-none">
+                <!-- Partículas interactivas -->
+                <div class="particles-container"></div>
+                
+                <!-- Líneas de gradiente animadas -->
+                <div class="gradient-lines">
+                    <div class="gradient-line line-1"></div>
+                    <div class="gradient-line line-2"></div>
+                    <div class="gradient-line line-3"></div>
+                </div>
+
+                <!-- Efecto de brillo que sigue al cursor -->
+                <div class="cursor-glow"></div>
+            </div>
+
+            <!-- Overlay de scroll -->
+            <div class="scroll-overlay"></div>
+        </section>
+
+        <!-- Estadísticas Section -->
+        <section id="estadisticas" class="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+            <!-- Elementos decorativos de fondo -->
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--accent-color)_0%,_transparent_70%)] opacity-5"></div>
+            <div class="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-5"></div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <!-- Encabezado -->
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold mb-4 text-gray-900">Nuestro Impacto</h2>
+                    <div class="w-24 h-1 bg-accent mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Resultados medibles que transforman el futuro de las ventas B2B
+                    </p>
         </div>
 
-        <!-- Sección ¿Quiénes Somos? RG Solutions -->
-        <section class="py-16 bg-section/80 border-b border-accent/20" id="quienes-somos">
-            <div class="max-w-screen-lg mx-auto px-2 sm:px-4">
-                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center mb-12 text-accent">¿Quiénes Somos?</h2>
-                <div class="flex flex-col gap-12">
-                    <!-- Card 1: Izquierda -->
-                    <div class="flex justify-start">
-                        <div class="w-full md:w-[90%] lg:w-[90%] flex flex-col md:flex-row items-center bg-base rounded-2xl shadow-2xl p-12 min-h-[320px] h-auto transition-transform hover:scale-[1.025] hover:shadow-accent/40 md:ml-0 md:mr-auto" data-aos="fade-right" data-aos-duration="900">
-                            <div class="flex-1 mb-6 md:mb-0 md:mr-12 flex flex-col justify-center text-left">
-                                <h3 class="text-3xl font-bold text-accent mb-3">RG Solutions</h3>
-                                <p class="text-white/90 text-xl">Es un call center con sede en Argentina, especializado en la venta de servicios y productos.</p>
-                            </div>
-                            <div class="flex-shrink-0 flex items-center justify-center">
-                                <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Call Center" class="w-40 h-40 object-contain rounded-full bg-accent/10 p-3">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 2: Derecha (sin bullets, texto alineado a la izquierda) -->
-                    <div class="flex justify-end">
-                        <div class="w-full md:w-[90%] lg:w-[90%] flex flex-col md:flex-row-reverse items-center bg-base rounded-2xl shadow-2xl p-12 min-h-[320px] h-auto transition-transform hover:scale-[1.025] hover:shadow-accent/40 md:mr-0 md:ml-auto" data-aos="fade-left" data-aos-duration="900">
-                            <div class="flex-1 mb-6 md:mb-0 md:ml-12 flex flex-col justify-center text-left">
-                                <h3 class="text-2xl font-bold text-accent mb-3">Actualmente comercializamos:</h3>
-                                <p class="text-white/90 text-lg mb-2">Servicios de Cable e Internet de <strong>Supercanal</strong> <span class="text-secondary">(Top 3 en ventas a nivel nacional, presente en la mayoría de las provincias)</span>.</p>
-                                <p class="text-white/90 text-lg mb-2">Servicios de Cable e Internet de <strong>TIC</strong> <span class="text-secondary">(disponibles en Santiago del Estero)</span>.</p>
-                                <p class="text-white/90 text-lg mb-2">Servicios de Cable, Internet y Telefonía Fija de <strong>Claro</strong> <span class="text-secondary">(en La Rioja y Catamarca, con posibilidad de contratar por separado y una línea fija de regalo)</span>.</p>
-                                <p class="text-white/90 text-lg mb-2">Promociones especiales según región y compañía.</p>
-                            </div>
-                            <div class="flex-shrink-0 flex items-center justify-center">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1042/1042330.png" alt="Servicios" class="w-32 h-32 object-contain rounded-full bg-accent/10 p-3">
+                <!-- Grid de Estadísticas -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                    <!-- Clientes Satisfechos -->
+                    <div class="stat-card" data-aos="fade-up">
+                        <div class="relative p-6">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-3xl"></div>
+                            <div class="relative z-10">
+                                <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                                    <i class="fas fa-users text-2xl text-blue-600"></i>
+                                </div>
+                                <div class="stat-number font-serif text-5xl font-bold text-gray-900 mb-2" data-value="150">
+                                    0+
+                                </div>
+                                <p class="text-gray-600 font-medium">Clientes Satisfechos</p>
+                                <div class="mt-4 h-1 bg-blue-200 rounded-full overflow-hidden">
+                                    <div class="stat-bar h-full bg-blue-600 rounded-full" style="width: 0%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Card 3: Izquierda (sin bullets) -->
-                    <div class="flex justify-start">
-                        <div class="w-full md:w-[90%] lg:w-[90%] flex flex-col md:flex-row items-center bg-base rounded-2xl shadow-2xl p-12 min-h-[320px] h-auto transition-transform hover:scale-[1.025] hover:shadow-accent/40 md:ml-0 md:mr-auto" data-aos="fade-right" data-aos-duration="900">
-                            <div class="flex-1 mb-6 md:mb-0 md:mr-12 flex flex-col justify-center text-left">
-                                <h3 class="text-2xl font-bold text-accent mb-3">Próximamente también ofreceremos productos como:</h3>
-                                <p class="text-white/90 text-lg mb-2">Electrodomésticos</p>
-                                <p class="text-white/90 text-lg mb-2">Tecnología</p>
-                                <p class="text-white/90 text-lg mb-2">Artículos para el hogar</p>
-                            </div>
-                            <div class="flex-shrink-0 flex gap-4 items-center justify-center">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1042/1042332.png" alt="Electrodomésticos" class="w-20 h-20 object-contain rounded-full bg-accent/10 p-2">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1042/1042340.png" alt="Tecnología" class="w-20 h-20 object-contain rounded-full bg-accent/10 p-2">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1042/1042342.png" alt="Hogar" class="w-20 h-20 object-contain rounded-full bg-accent/10 p-2">
+
+                    <!-- Incremento en Ventas -->
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="relative p-6">
+                            <div class="absolute inset-0 bg-gradient-to-br from-green-50 to-green-100/50 rounded-3xl"></div>
+                            <div class="relative z-10">
+                                <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
+                                    <i class="fas fa-chart-line text-2xl text-green-600"></i>
+                                </div>
+                                <div class="stat-number font-serif text-5xl font-bold text-gray-900 mb-2" data-value="85">
+                                    0%
+                                </div>
+                                <p class="text-gray-600 font-medium">Incremento en Ventas</p>
+                                <div class="mt-4 h-1 bg-green-200 rounded-full overflow-hidden">
+                                    <div class="stat-bar h-full bg-green-600 rounded-full" style="width: 0%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Card 4: Derecha (texto alineado a la izquierda) -->
-                    <div class="flex justify-end">
-                        <div class="w-full md:w-[90%] lg:w-[90%] flex flex-col md:flex-row-reverse items-center bg-base rounded-2xl shadow-2xl p-12 min-h-[320px] h-auto transition-transform hover:scale-[1.025] hover:shadow-accent/40 md:mr-0 md:ml-auto" data-aos="fade-left" data-aos-duration="900">
-                            <div class="flex-1 mb-6 md:mb-0 md:ml-12 flex flex-col justify-center text-left">
-                                <h3 class="text-2xl font-bold text-accent mb-3">Nuestro equipo y objetivo</h3>
-                                <p class="text-white/90 text-xl mb-2">Contamos con un equipo de asesores entrenado para brindar atención personalizada, rápida y efectiva.</p>
-                                <p class="text-white/90 text-xl">Nuestro objetivo es conectarte con la mejor opción según tu ubicación y tus necesidades.</p>
-                            </div>
-                            <div class="flex-shrink-0 flex items-center justify-center">
-                                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Equipo" class="w-32 h-32 object-contain rounded-full bg-accent/10 p-3">
+
+                    <!-- ROI Promedio -->
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative p-6">
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-50 to-purple-100/50 rounded-3xl"></div>
+                            <div class="relative z-10">
+                                <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                                    <i class="fas fa-coins text-2xl text-purple-600"></i>
+                                </div>
+                                <div class="stat-number font-serif text-5xl font-bold text-gray-900 mb-2" data-value="320">
+                                    0%
+                                </div>
+                                <p class="text-gray-600 font-medium">ROI Promedio</p>
+                                <div class="mt-4 h-1 bg-purple-200 rounded-full overflow-hidden">
+                                    <div class="stat-bar h-full bg-purple-600 rounded-full" style="width: 0%"></div>
+                                </div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Proyectos Completados -->
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="relative p-6">
+                            <div class="absolute inset-0 bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-3xl"></div>
+                            <div class="relative z-10">
+                                <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mb-6">
+                                    <i class="fas fa-check-circle text-2xl text-orange-600"></i>
+                                </div>
+                                <div class="stat-number font-serif text-5xl font-bold text-gray-900 mb-2" data-value="200">
+                                    0+
+                                </div>
+                                <p class="text-gray-600 font-medium">Proyectos Completados</p>
+                                <div class="mt-4 h-1 bg-orange-200 rounded-full overflow-hidden">
+                                    <div class="stat-bar h-full bg-orange-600 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="text-center mt-16" data-aos="fade-up">
+                    <a href="#contacto" class="inline-flex items-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-accent-dark transition-all duration-300 group">
+                        <span>Únete a nuestros clientes satisfechos</span>
+                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonios Section -->
+        <section id="testimonios" class="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+            <!-- Elementos decorativos de fondo -->
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--accent-color)_0%,_transparent_70%)] opacity-5"></div>
+            <div class="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-5"></div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <!-- Encabezado -->
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold mb-4 text-gray-900">Testimonios y Clientes</h2>
+                    <div class="w-24 h-1 bg-accent mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Empresas que confían en nosotros y resultados que hablan por sí mismos
+                    </p>
+                </div>
+
+                <!-- Logos de Clientes -->
+                <div class="max-w-7xl mx-auto mb-20">
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+                        <!-- Logo 1 -->
+                        <div class="client-logo" data-aos="fade-up">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" 
+                                 alt="Google" 
+                                 class="w-full h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300">
+                        </div>
+                        <!-- Logo 2 -->
+                        <div class="client-logo" data-aos="fade-up" data-aos-delay="100">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1200px-IBM_logo.svg.png" 
+                                 alt="IBM" 
+                                 class="w-full h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300">
+                        </div>
+                        <!-- Logo 3 -->
+                        <div class="client-logo" data-aos="fade-up" data-aos-delay="200">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1200px-Microsoft_logo_%282012%29.svg.png" 
+                                 alt="Microsoft" 
+                                 class="w-full h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300">
+                        </div>
+                        <!-- Logo 4 -->
+                        <div class="client-logo" data-aos="fade-up" data-aos-delay="300">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Salesforce_logo.svg/1200px-Salesforce_logo.svg.png" 
+                                 alt="Salesforce" 
+                                 class="w-full h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300">
+                        </div>
+                        <!-- Logo 5 -->
+                        <div class="client-logo" data-aos="fade-up" data-aos-delay="400">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Amazon_Web_Services_Logo.svg/1200px-Amazon_Web_Services_Logo.svg.png" 
+                                 alt="AWS" 
+                                 class="w-full h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300">
+                        </div>
+                        <!-- Logo 6 -->
+                        <div class="client-logo" data-aos="fade-up" data-aos-delay="500">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Adobe_logo_%282020%29.svg/1200px-Adobe_logo_%282020%29.svg.png" 
+                                 alt="Adobe" 
+                                 class="w-full h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonios -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                    <!-- Testimonio 1 -->
+                    <div class="testimonial-card" data-aos="fade-up">
+                        <div class="relative p-8">
+                            <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-3xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-6xl text-accent/20 font-serif mb-4">"</div>
+                                <p class="text-gray-600 mb-6">
+                                    La implementación de la estrategia de ventas de RG Solutions transformó 
+                                    completamente nuestro proceso comercial. Los resultados superaron nuestras 
+                                    expectativas.
+                                </p>
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 rounded-full overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                             alt="Cliente" 
+                                             class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900">Carlos Rodríguez</h4>
+                                        <p class="text-sm text-gray-600">Director Comercial, TechCorp</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 2 -->
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="relative p-8">
+                            <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-3xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-6xl text-accent/20 font-serif mb-4">"</div>
+                                <p class="text-gray-600 mb-6">
+                                    El equipo de RG Solutions demostró un profundo conocimiento del mercado B2B. 
+                                    Su metodología y herramientas nos ayudaron a optimizar nuestro pipeline de ventas.
+                                </p>
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 rounded-full overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                             alt="Cliente" 
+                                             class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900">Ana Martínez</h4>
+                                        <p class="text-sm text-gray-600">CEO, InnovateTech</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonio 3 -->
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative p-8">
+                            <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-3xl"></div>
+                            <div class="relative z-10">
+                                <div class="text-6xl text-accent/20 font-serif mb-4">"</div>
+                                <p class="text-gray-600 mb-6">
+                                    La capacitación y el soporte continuo de RG Solutions han sido fundamentales 
+                                    para el crecimiento de nuestro equipo comercial. Altamente recomendados.
+                                </p>
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 rounded-full overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                             alt="Cliente" 
+                                             class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900">Miguel Sánchez</h4>
+                                        <p class="text-sm text-gray-600">VP de Ventas, GlobalTech</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="text-center mt-16" data-aos="fade-up">
+                    <a href="#contacto" class="inline-flex items-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-accent-dark transition-all duration-300 group">
+                        <span>Únete a nuestros clientes satisfechos</span>
+                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiénes Somos Section -->
+        <section id="quienes-somos" class="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+            <!-- Elementos decorativos de fondo -->
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--accent-color)_0%,_transparent_70%)] opacity-5"></div>
+            <div class="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-5"></div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <!-- Encabezado -->
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold mb-4 text-gray-900">Quiénes Somos</h2>
+                    <div class="w-24 h-1 bg-accent mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Transformando el futuro de las ventas B2B con experiencia y visión
+                    </p>
+                </div>
+
+                <!-- Contenido Principal -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+                    <!-- Imagen del Fundador -->
+                    <div class="relative" data-aos="fade-right">
+                        <div class="aspect-w-4 aspect-h-5 rounded-3xl overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                                 alt="Fundador RG Sales Solutions" 
+                                 class="object-cover w-full h-full transform hover:scale-105 transition-transform duration-700">
+                        </div>
+                        <!-- Elemento decorativo -->
+                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/10 rounded-full blur-2xl"></div>
+                    </div>
+
+                    <!-- Información del Fundador -->
+                    <div class="space-y-8" data-aos="fade-left">
+                        <div>
+                            <h3 class="text-3xl font-serif font-bold text-gray-900 mb-2">Ricardo González</h3>
+                            <p class="text-xl text-accent font-medium">Fundador & CEO</p>
+                        </div>
+
+                        <p class="text-gray-600 leading-relaxed">
+                            Con más de 15 años de experiencia en ventas B2B y transformación digital, 
+                            Ricardo ha liderado equipos de alto rendimiento y ha asesorado a empresas 
+                            Fortune 500 en la optimización de sus procesos comerciales.
+                        </p>
+
+                        <!-- Credenciales -->
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                                <div class="text-3xl font-serif font-bold text-accent mb-2">15+</div>
+                                <p class="text-gray-600">Años de Experiencia</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                                <div class="text-3xl font-serif font-bold text-accent mb-2">2010</div>
+                                <p class="text-gray-600">Año de Fundación</p>
+                            </div>
+                        </div>
+
+                        <!-- Valores Clave -->
+                        <div class="space-y-4">
+                            <h4 class="text-xl font-serif font-bold text-gray-900">Nuestros Valores</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-bullseye text-accent"></i>
+                                    </div>
+                                    <span class="text-gray-600">Excelencia</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-handshake text-accent"></i>
+                                    </div>
+                                    <span class="text-gray-600">Integridad</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-lightbulb text-accent"></i>
+                                    </div>
+                                    <span class="text-gray-600">Innovación</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-users text-accent"></i>
+                                    </div>
+                                    <span class="text-gray-600">Colaboración</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CTA -->
+                        <a href="#contacto" class="inline-flex items-center px-6 py-3 bg-accent text-white rounded-xl hover:bg-accent-dark transition-all duration-300 group">
+                            <span>Conoce más sobre nuestro equipo</span>
+                            <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Servicios Section -->
-        <section class="py-20 bg-section" id="servicios">
-            <div class="max-w-screen-lg mx-auto px-4 sm:px-8">
-                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center mb-12 text-white">
-                    Nuestros Servicios
-                </h2>
-                <div class="mt-12 flex justify-center">
-                    <video class="rounded-xl shadow-lg w-full max-w-3xl" autoplay loop muted controls>
-                        <source src="video/Video%20de%20WhatsApp%202025-05-27%20a%20las%2018.28.25_ab5f648c.mp4" type="video/mp4">
-                        Tu navegador no soporta el video.
-                    </video>
+        <section id="servicios" class="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+            <!-- Elementos decorativos de fondo -->
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--accent-color)_0%,_transparent_70%)] opacity-5"></div>
+            <div class="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-5"></div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <!-- Encabezado -->
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold mb-4 text-gray-900">Nuestros Servicios</h2>
+                    <div class="w-24 h-1 bg-accent mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Soluciones personalizadas para potenciar tu estrategia de ventas B2B
+                    </p>
+                </div>
+
+                <!-- Bento Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+                    <!-- Servicio Principal -->
+                    <div class="bento-card col-span-1 md:col-span-2 lg:col-span-2 row-span-2" data-aos="fade-up">
+                        <div class="relative h-full p-8">
+                            <div class="absolute inset-0 bg-gradient-to-br from-accent/10 to-accent/5 rounded-3xl"></div>
+                            <div class="relative z-10 h-full flex flex-col">
+                                <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mb-6">
+                                    <i class="fas fa-chart-line text-2xl text-accent"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4">Estrategia de Ventas B2B</h3>
+                                <p class="text-gray-600 mb-6 flex-grow">
+                                    Desarrollamos estrategias personalizadas que transforman tu proceso de ventas, 
+                                    optimizando cada etapa desde la prospección hasta el cierre.
+                                </p>
+                                <ul class="space-y-3">
+                                    <li class="flex items-center text-gray-600">
+                                        <i class="fas fa-check-circle text-accent mr-3"></i>
+                                        Análisis de mercado y competencia
+                                    </li>
+                                    <li class="flex items-center text-gray-600">
+                                        <i class="fas fa-check-circle text-accent mr-3"></i>
+                                        Desarrollo de procesos de venta
+                                    </li>
+                                    <li class="flex items-center text-gray-600">
+                                        <i class="fas fa-check-circle text-accent mr-3"></i>
+                                        Implementación de metodologías
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Capacitación Premium -->
+                    <div class="bento-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="relative h-full p-6">
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-50 to-purple-100/50 rounded-3xl"></div>
+                            <div class="relative z-10">
+                                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fas fa-graduation-cap text-xl text-purple-600"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3">Capacitación Premium</h3>
+                                <p class="text-gray-600">
+                                    Programas de formación especializados para equipos de ventas, 
+                                    enfocados en técnicas avanzadas y mejores prácticas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Análisis de Datos -->
+                    <div class="bento-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative h-full p-6">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-3xl"></div>
+                            <div class="relative z-10">
+                                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fas fa-database text-xl text-blue-600"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3">Análisis de Datos</h3>
+                                <p class="text-gray-600">
+                                    Transformamos datos en insights accionables para optimizar 
+                                    tu estrategia de ventas y mejorar resultados.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Soporte Técnico -->
+                    <div class="bento-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="relative h-full p-6">
+                            <div class="absolute inset-0 bg-gradient-to-br from-green-50 to-green-100/50 rounded-3xl"></div>
+                            <div class="relative z-10">
+                                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fas fa-headset text-xl text-green-600"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3">Soporte Técnico</h3>
+                                <p class="text-gray-600">
+                                    Asistencia continua para resolver dudas y optimizar el uso 
+                                    de herramientas y procesos de venta.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Integración Tecnológica -->
+                    <div class="bento-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="relative h-full p-6">
+                            <div class="absolute inset-0 bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-3xl"></div>
+                            <div class="relative z-10">
+                                <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
+                                    <i class="fas fa-plug text-xl text-orange-600"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3">Integración Tecnológica</h3>
+                                <p class="text-gray-600">
+                                    Implementación y optimización de herramientas tecnológicas 
+                                    para potenciar tu proceso de ventas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="text-center mt-16" data-aos="fade-up">
+                    <a href="#contacto" class="inline-flex items-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-accent-dark transition-all duration-300 group">
+                        <span>¿Listo para transformar tus ventas?</span>
+                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
                 </div>
             </div>
         </section>
+
         <!-- Contacto Section -->
-         <section class="py-20 bg-section" id="contacto">
-            <div class="max-w-screen-lg mx-auto px-4 sm:px-8">
-                <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center mb-12 text-accent">Contacto</h2>
-                <div class="text-center text-white/90">
-                    <p class="text-xl mb-4">Puedes contactarnos a través de:</p>
-                    <p class="text-lg"><i class="fas fa-envelope mr-2"></i> Email: <a href="mailto:soporte@rgsolutions.com" class="text-accent hover:underline">soporte@rgsolutions.com</a></p>
-                    <p class="text-lg"><i class="fas fa-phone mr-2"></i> Teléfono: <a href="tel:+5491112345678" class="text-accent hover:underline">+54 9 11 1234 5678</a></p>
-                    <p class="text-lg mt-4">O visitando nuestra oficina en [Dirección de ejemplo en Argentina].</p>
+        <section id="contacto" class="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+            <!-- Elementos decorativos de fondo -->
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--accent-color)_0%,_transparent_70%)] opacity-5"></div>
+            <div class="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-5"></div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Encabezado -->
+                    <div class="text-center mb-16" data-aos="fade-up">
+                        <h2 class="text-4xl md:text-5xl font-serif font-bold mb-4 text-gray-900">Transforma tus Ventas</h2>
+                        <div class="w-24 h-1 bg-accent mx-auto mb-6"></div>
+                        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                            Agenda una consulta gratuita y descubre cómo podemos ayudarte a alcanzar tus objetivos
+                        </p>
+                    </div>
+
+                    <!-- Formulario y Contenido -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <!-- Formulario -->
+                        <div class="bg-white rounded-2xl p-8 shadow-lg" data-aos="fade-right">
+                            <form id="contactForm" class="space-y-6">
+                                <!-- Nombre -->
+                                <div class="form-group">
+                                    <div class="relative">
+                                        <input type="text" id="name" name="name" required
+                                               class="w-full px-4 py-3 pl-12 border border-gray-200 rounded-xl focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300">
+                                        <label for="name" class="absolute left-12 top-3 text-gray-500 transition-all duration-300 pointer-events-none">
+                                            Nombre completo
+                                        </label>
+                                        <i class="fas fa-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                    </div>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="form-group">
+                                    <div class="relative">
+                                        <input type="email" id="email" name="email" required
+                                               class="w-full px-4 py-3 pl-12 border border-gray-200 rounded-xl focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300">
+                                        <label for="email" class="absolute left-12 top-3 text-gray-500 transition-all duration-300 pointer-events-none">
+                                            Correo electrónico
+                                        </label>
+                                        <i class="fas fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                    </div>
+                                </div>
+
+                                <!-- Teléfono -->
+                                <div class="form-group">
+                                    <div class="relative">
+                                        <input type="tel" id="phone" name="phone" required
+                                               class="w-full px-4 py-3 pl-12 border border-gray-200 rounded-xl focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300">
+                                        <label for="phone" class="absolute left-12 top-3 text-gray-500 transition-all duration-300 pointer-events-none">
+                                            Teléfono
+                                        </label>
+                                        <i class="fas fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                    </div>
+                                </div>
+
+                                <!-- Mensaje -->
+                                <div class="form-group">
+                                    <div class="relative">
+                                        <textarea id="message" name="message" rows="4" required
+                                                  class="w-full px-4 py-3 pl-12 border border-gray-200 rounded-xl focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300"></textarea>
+                                        <label for="message" class="absolute left-12 top-3 text-gray-500 transition-all duration-300 pointer-events-none">
+                                            ¿Cómo podemos ayudarte?
+                                        </label>
+                                        <i class="fas fa-comment absolute left-4 top-6 text-gray-400"></i>
+                                    </div>
+                                </div>
+
+                                <!-- Botón de envío -->
+                                <button type="submit" class="submit-button w-full px-8 py-4 bg-accent text-white rounded-xl hover:bg-accent-dark transition-all duration-300 group relative overflow-hidden">
+                                    <span class="relative z-10 flex items-center justify-center">
+                                        <span class="button-text">Agendar Consulta Gratuita</span>
+                                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                    </span>
+                                    <div class="absolute inset-0 bg-accent-dark scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+                                </button>
+                            </form>
+
+                            <!-- Mensaje de éxito -->
+                            <div id="successMessage" class="hidden mt-6 p-4 bg-green-50 text-green-700 rounded-xl">
+                                <div class="flex items-center">
+                                    <i class="fas fa-check-circle text-2xl mr-3"></i>
+                                    <p>¡Gracias por contactarnos! Nos pondremos en contacto contigo pronto.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Información de contacto -->
+                        <div class="space-y-8" data-aos="fade-left">
+                            <div class="bg-white rounded-2xl p-8 shadow-lg">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-6">Información de Contacto</h3>
+                                
+                                <!-- Ubicación -->
+                                <div class="flex items-start space-x-4 mb-6">
+                                    <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-map-marker-alt text-xl text-accent"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 mb-1">Ubicación</h4>
+                                        <p class="text-gray-600">Buenos Aires, Argentina</p>
+                                    </div>
+                                </div>
+
+                                <!-- Teléfono -->
+                                <div class="flex items-start space-x-4 mb-6">
+                                    <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-phone text-xl text-accent"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 mb-1">Teléfono</h4>
+                                        <p class="text-gray-600">+54 11 1234-5678</p>
+                                    </div>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="flex items-start space-x-4">
+                                    <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-envelope text-xl text-accent"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 mb-1">Email</h4>
+                                        <p class="text-gray-600">contacto@rgsolutions.com</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Horario de atención -->
+                            <div class="bg-white rounded-2xl p-8 shadow-lg">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-6">Horario de Atención</h3>
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Lunes - Viernes</span>
+                                        <span class="font-medium text-gray-900">9:00 - 18:00</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Sábado</span>
+                                        <span class="font-medium text-gray-900">10:00 - 14:00</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600">Domingo</span>
+                                        <span class="font-medium text-gray-900">Cerrado</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
