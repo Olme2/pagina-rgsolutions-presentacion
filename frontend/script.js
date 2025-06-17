@@ -172,4 +172,46 @@ window.addEventListener('DOMContentLoaded', function() {
     //     path: 'https://assets3.lottiefiles.com/packages/lf20_kkflmtur.json'
     // });
 
-}); 
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('intro-video');
+    const heroContent = document.getElementById('hero-text-content');
+
+    // Función para mostrar el contenido cuando el video esté listo
+    function showHeroContent() {
+        heroContent.style.opacity = '1';
+    }
+
+    // Si el video ya está cargado, mostrar el contenido inmediatamente
+    if (video.readyState >= 3) {
+        showHeroContent();
+    } else {
+        // Si no, esperar a que el video esté listo
+        video.addEventListener('canplay', showHeroContent);
+    }
+
+    // Manejar errores del video
+    video.addEventListener('error', function() {
+        console.error('Error al cargar el video');
+        // Mostrar el contenido de todos modos
+        showHeroContent();
+    });
+});
+
+// Cross-fade al finalizar el video
+const introVideo = document.getElementById('intro-video');
+const heroTextContent = document.getElementById('hero-text-content');
+
+if (introVideo && heroTextContent) {
+    introVideo.addEventListener('ended', () => {
+        // Desvanece el video
+        introVideo.style.opacity = '0';
+        // Muestra el contenido de texto
+        heroTextContent.style.opacity = '1';
+        // Opcional: oculta el video tras la transición
+        setTimeout(() => {
+            introVideo.style.display = 'none';
+        }, 2000); // Tiempo suficiente para la transición
+    });
+} 

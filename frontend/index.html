@@ -90,66 +90,20 @@
 
     <div class="min-h-screen">
         <!-- Hero Section -->
-        <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-            <!-- Overlay con gradiente dinámico -->
-            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80"></div>
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--accent-color)_0%,_transparent_70%)] opacity-20"></div>
+        <header class="hero">
+            <video id="intro-video" autoplay muted playsinline>
+                <source src="video/Video de WhatsApp 2025-05-27 a las 19.05.27_dd62d45e.mp4" type="video/mp4">
+            </video>
 
-            <!-- Contenido principal con efecto de parallax -->
-            <div class="container mx-auto px-4 relative z-10">
-                <div class="max-w-5xl mx-auto text-center">
-                    <!-- Logo con efecto de entrada -->
-                    <div class="mb-12" data-aos="fade-down" data-aos-delay="200">
-                        <img src="images/Logo-RG.png" alt="RG Solutions Logo" class="h-24 mx-auto transform hover:scale-105 transition-transform duration-500">
-                    </div>
-
-                    <!-- Título principal con efecto de escritura -->
-                    <div class="relative mb-8" data-aos="fade-up">
-                        <h1 class="text-6xl md:text-8xl font-serif font-bold text-white leading-tight">
-                            <span class="inline-block typewriter-text">Transformamos</span>
-                            <span class="text-accent block mt-2">Ventas B2B</span>
-                            <span class="text-accent block mt-2">en Resultados</span>
-                        </h1>
-                        <!-- Línea decorativa animada -->
-                        <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-32 h-1 bg-accent"></div>
-                    </div>
-
-                    <!-- Subtítulo con efecto de fade -->
-                    <p class="text-2xl md:text-3xl text-gray-200 mb-16 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
-                        Estrategias de ventas personalizadas que impulsan el crecimiento de tu empresa
-                    </p>
-
-                    <!-- CTA Principal con efectos avanzados -->
-                    <div class="flex flex-col sm:flex-row gap-6 justify-center" data-aos="fade-up" data-aos-delay="200">
-                        <a href="#contacto" class="cta-primary group">
-                            <span class="relative z-10 flex items-center justify-center">
-                                <span>Agenda una Consulta Gratuita</span>
-                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </span>
-                            <div class="absolute inset-0 bg-accent-dark scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
-                        </a>
-                        <a href="#servicios" class="cta-secondary group">
-                            <span class="flex items-center justify-center">
-                                <span>Conoce Nuestros Servicios</span>
-                                <i class="fas fa-chevron-down ml-2 group-hover:translate-y-1 transition-transform"></i>
-                            </span>
-                        </a>
-                    </div>
-
-                    <!-- Indicador de scroll con animación mejorada -->
-                    <div class="absolute bottom-12 left-1/2 -translate-x-1/2" data-aos="fade-up" data-aos-delay="300">
-                        <div class="flex flex-col items-center">
-                            <div class="scroll-indicator">
-                                <div class="scroll-indicator-dot"></div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="hero-content" id="hero-text-content">
+                <h1 class="hero-title">Soluciones <span class="highlight">comerciales</span><br> a la medida de tu empresa</h1>
+                <p class="hero-subtitle">Conectamos marcas con sus clientes ideales a través de estrategias innovadoras y un equipo de ventas experto.</p>
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn btn-primary">Contactanos</a>
+                    <a href="#servicios" class="btn btn-secondary">Servicios</a>
                 </div>
             </div>
-
-            <!-- Overlay de scroll -->
-            <div class="scroll-overlay"></div>
-        </section>
+        </header>
 
         <!-- Estadísticas Section -->
         <section id="estadisticas" class="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
