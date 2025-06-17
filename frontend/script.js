@@ -197,21 +197,52 @@ document.addEventListener('DOMContentLoaded', function() {
         // Mostrar el contenido de todos modos
         showHeroContent();
     });
-});
 
-// Cross-fade al finalizar el video
-const introVideo = document.getElementById('intro-video');
-const heroTextContent = document.getElementById('hero-text-content');
+    // Cross-fade al finalizar el video
+    if (video && heroContent) {
+        video.addEventListener('ended', () => {
+            // 1. Inicia el desvanecimiento del video
+            video.style.opacity = '0';
 
-if (introVideo && heroTextContent) {
-    introVideo.addEventListener('ended', () => {
-        // Desvanece el video
-        introVideo.style.opacity = '0';
-        // Muestra el contenido de texto
-        heroTextContent.style.opacity = '1';
-        // Opcional: oculta el video tras la transición
-        setTimeout(() => {
-            introVideo.style.display = 'none';
-        }, 2000); // Tiempo suficiente para la transición
+            // 2. Trae el contenedor de texto al frente
+            heroContent.style.zIndex = '2';
+            
+            // 3. Inicia la aparición del contenido de texto
+            heroContent.style.opacity = '1';
+
+            // 4. Opcional: oculta el video tras la transición
+            setTimeout(() => {
+                if (video) { // Chequeo de seguridad
+                    video.style.display = 'none';
+                }
+            }, 2000); // Tiempo suficiente para la transición
+        });
+    }
+
+    // Configuración de máximos para barras no porcentuales
+    const maxClientes = 150; // Puedes ajustar este valor si el máximo cambia
+    const maxProyectos = 200;
+
+    document.querySelectorAll('.stat-bar').forEach(bar => {
+        const parent = bar.closest('.stat-card');
+        let value = 0;
+        let width = 0;
+        // Busca el valor en el número de la estadística
+        const statNumber = parent.querySelector('.stat-number');
+        if (statNumber) {
+            let raw = statNumber.getAttribute('data-value') || statNumber.textContent;
+            raw = raw.replace(/[^\d%]/g, '');
+            value = parseInt(raw);
+        }
+        if (parent && parent.textContent.includes('Ventas')) {
+            width = value; // 85%
+        } else if (parent && parent.textContent.includes('ROI')) {
+            width = value; // 70%
+        } else if (parent && parent.textContent.includes('Clientes')) {
+            width = Math.min(100, Math.round((value / maxClientes) * 100));
+        } else if (parent && parent.textContent.includes('Proyectos')) {
+            width = Math.min(100, Math.round((value / maxProyectos) * 100));
+        }
+        bar.style.width = width + '%';
     });
-} 
+}); 

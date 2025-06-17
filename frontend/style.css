@@ -185,6 +185,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #0D1B2A; /* Color de fondo base */
 }
 
 #intro-video {
@@ -211,7 +212,7 @@ header {
 
 #hero-text-content {
     position: relative;
-    z-index: 3;
+    z-index: -1; /* Inicialmente detrás del video */
     text-align: center;
     padding: 2rem;
     max-width: 800px;
