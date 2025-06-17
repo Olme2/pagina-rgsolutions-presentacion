@@ -365,4 +365,45 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-}); 
+});
+
+// --- INICIALIZACIÓN DE SWIPER PARA TESTIMONIOS ---
+if (document.querySelector('.testimonial-swiper')) {
+    const testimonialSwiper = new Swiper('.testimonial-swiper', {
+        // Bucle infinito para que nunca se acabe
+        loop: true,
+
+        // Autoplay para que se mueva solo
+        autoplay: {
+            delay: 5000, // 5 segundos por slide
+            disableOnInteraction: false, // El autoplay no se detiene si el usuario interactúa
+            pauseOnMouseEnter: true, // Se pausa si el usuario pone el cursor encima
+        },
+
+        // Paginación con bullets en la parte inferior
+        pagination: {
+            el: '.testimonial-pagination',
+            clickable: true,
+        },
+
+        // Botones de flecha para navegar
+        navigation: {
+            nextEl: '.testimonial-next',
+            prevEl: '.testimonial-prev',
+        },
+
+        // Cantidad de slides a mostrar según el ancho de la pantalla
+        slidesPerView: 1,
+        spaceBetween: 30, // Espacio de 30px entre slides
+        breakpoints: {
+            // para pantallas de más de 768px de ancho
+            768: {
+                slidesPerView: 2,
+            },
+            // para pantallas de más de 1024px de ancho
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+    });
+} 

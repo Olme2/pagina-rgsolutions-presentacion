@@ -397,4 +397,91 @@ nav {
 /* Pausar la animación cuando el usuario está interactuando */
 .logos-container:hover .logos-scroller {
     animation-play-state: paused;
+}
+
+/* --- ESTILOS PARA CARRUSEL DE TESTIMONIOS --- */
+.testimonial-swiper {
+    padding-bottom: 60px; /* Espacio extra en la parte inferior para la paginación */
+}
+
+/* Estilo para los 'bullets' de la paginación */
+.testimonial-pagination .swiper-pagination-bullet {
+    background-color: #ccc;
+    opacity: 0.7;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo para el 'bullet' activo */
+.testimonial-pagination .swiper-pagination-bullet-active {
+    background-color: var(--accent-color);
+    opacity: 1;
+}
+
+/* Estilo para las flechas de navegación */
+.testimonial-prev,
+.testimonial-next {
+    color: var(--accent-color); /* Color de acento de tu marca */
+    --swiper-navigation-size: 30px; /* Tamaño de las flechas */
+    transition: transform 0.2s ease;
+}
+
+/* Efecto hover para las flechas */
+.testimonial-prev:hover,
+.testimonial-next:hover {
+    transform: scale(1.2);
+}
+
+/* Hacemos las flechas un poco más audaces */
+.testimonial-prev::after,
+.testimonial-next::after {
+    font-weight: 900;
+}
+
+/* Estilos para las tarjetas de testimonios */
+.testimonial-card {
+    background: white;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Ajustes responsivos para el carrusel */
+@media (max-width: 768px) {
+    .testimonial-prev,
+    .testimonial-next {
+        display: none;
+    }
+    
+    .testimonial-swiper {
+        padding-bottom: 40px;
+    }
+}
+
+/* Separación mejorada para las flechas del carrusel de testimonios */
+.testimonial-prev {
+    left: -56px !important; /* 3.5rem, separación generosa y estética */
+}
+.testimonial-next {
+    right: -56px !important;
+}
+@media (max-width: 1280px) {
+    .testimonial-prev {
+        left: -32px !important; /* 2rem en pantallas medianas */
+    }
+    .testimonial-next {
+        right: -32px !important;
+    }
+}
+@media (max-width: 1024px) {
+    .testimonial-prev {
+        left: -16px !important; /* 1rem en pantallas pequeñas */
+    }
+    .testimonial-next {
+        right: -16px !important;
+    }
 } 
