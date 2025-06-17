@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     backDelay: 2000,
                     loop: true,
                     showCursor: true,
-                    cursorChar: '█',
+                    cursorChar: '|',
                     smartBackspace: true
                 });
             }
