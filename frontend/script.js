@@ -174,50 +174,79 @@ window.addEventListener('DOMContentLoaded', function() {
 
 });
 
+// Video Background Handler
 document.addEventListener('DOMContentLoaded', function() {
     const video = document.getElementById('intro-video');
     const heroContent = document.getElementById('hero-text-content');
-
-    // Función para mostrar el contenido cuando el video esté listo
-    function showHeroContent() {
-        heroContent.style.opacity = '1';
-    }
-
-    // Si el video ya está cargado, mostrar el contenido inmediatamente
-    if (video.readyState >= 3) {
-        showHeroContent();
-    } else {
-        // Si no, esperar a que el video esté listo
-        video.addEventListener('canplay', showHeroContent);
-    }
-
-    // Manejar errores del video
-    video.addEventListener('error', function() {
-        console.error('Error al cargar el video');
-        // Mostrar el contenido de todos modos
-        showHeroContent();
+    
+    // Crear la timeline principal
+    const heroTimeline = gsap.timeline({
+        paused: true,
+        defaults: {
+            ease: "power3.out",
+            duration: 1
+        }
     });
 
-    // Cross-fade al finalizar el video
-    if (video && heroContent) {
-        video.addEventListener('ended', () => {
-            // 1. Inicia el desvanecimiento del video
-            video.style.opacity = '0';
+    // Configurar la secuencia de animación
+    heroTimeline
+        // Fade in del contenedor principal
+        .to(heroContent, {
+            opacity: 1,
+            duration: 0.5
+        })
+        // Animación del logo
+        .from('.hero-logo', {
+            y: -30,
+            opacity: 0,
+            duration: 1
+        })
+        // Animación del título línea por línea
+        .from('.text-reveal-mask span', {
+            y: 100,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "power3.out"
+        }, "-=0.5")
+        // Animación de la línea decorativa
+        .to('.hero-divider', {
+            width: "100px",
+            opacity: 1,
+            duration: 0.8
+        }, "-=0.3")
+        // Animación del subtítulo
+        .from('.hero-subtitle', {
+            y: 20,
+            opacity: 0,
+            duration: 1
+        }, "-=0.3")
+        // Animación de los botones
+        .from('.btn', {
+            y: 20,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2
+        }, "-=0.5");
 
-            // 2. Trae el contenedor de texto al frente
-            heroContent.style.zIndex = '2';
-            
-            // 3. Inicia la aparición del contenido de texto
-            heroContent.style.opacity = '1';
-
-            // 4. Opcional: oculta el video tras la transición
-            setTimeout(() => {
-                if (video) { // Chequeo de seguridad
-                    video.style.display = 'none';
-                }
-            }, 2000); // Tiempo suficiente para la transición
-        });
+    // Función para iniciar la animación cuando el video termine
+    function startHeroAnimation() {
+        // Aplicar blur al video
+        video.classList.add('hero-blur');
+        // Iniciar la timeline
+        heroTimeline.play();
     }
+
+    // Event listener para el final del video
+    if (video) {
+        video.addEventListener('ended', startHeroAnimation);
+    }
+
+    // Fallback en caso de error del video
+    video.addEventListener('error', function() {
+        console.error('Error al cargar el video');
+        startHeroAnimation();
+    });
 
     // Configuración de máximos para barras no porcentuales
     const maxClientes = 150; // Puedes ajustar este valor si el máximo cambia
@@ -244,5 +273,71 @@ document.addEventListener('DOMContentLoaded', function() {
             width = Math.min(100, Math.round((value / maxProyectos) * 100));
         }
         bar.style.width = width + '%';
+    });
+});
+
+// Navbar Animations
+document.addEventListener('DOMContentLoaded', function() {
+    // Registrar el plugin ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Variables para el control del scroll
+    let lastScroll = 0;
+    const nav = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Animación inicial de los enlaces del menú
+    gsap.from(navLinks, {
+        y: -20,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power2.out"
+    });
+
+    // Control del scroll para mostrar/ocultar la navbar
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        
+        const currentScroll = window.pageYOffset;
+        
+        // Determinar la dirección del scroll
+        if (currentScroll <= 0) {
+            nav.classList.remove('nav-hidden');
+            nav.classList.add('nav-visible');
+            return;
+        }
+        
+        if (currentScroll > lastScroll && !nav.classList.contains('nav-hidden')) {
+            // Scroll hacia abajo
+            nav.classList.remove('nav-visible');
+            nav.classList.add('nav-hidden');
+        } else if (currentScroll < lastScroll && nav.classList.contains('nav-hidden')) {
+            // Scroll hacia arriba
+            nav.classList.remove('nav-hidden');
+            nav.classList.add('nav-visible');
+        }
+        
+        lastScroll = currentScroll;
+    });
+
+    // Smooth scroll para los enlaces de navegación
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            
+            if (target) {
+                gsap.to(window, {
+                    duration: 1,
+                    scrollTo: {
+                        y: target,
+                        offsetY: 70
+                    },
+                    ease: "power3.inOut"
+                });
+            }
+        });
     });
 }); 

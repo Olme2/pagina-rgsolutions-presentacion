@@ -73,16 +73,16 @@
 
 </head>
 <body class="bg-background text-white">
-    <nav class="bg-section/80 backdrop-blur-md fixed w-full z-50">
+    <nav class="nav-visible">
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
-                <a href="#" class="flex items-center space-x-4">
+                <a href="#" class="flex items-center space-x-4 nav-logo">
                     <img src="images/Logo-RG.png" alt="Logo RG Solutions" class="h-14 w-auto max-w-[80px] object-contain drop-shadow-lg">
                     <span class="text-2xl font-poppins font-bold text-accent hover:text-accent/80 transition-colors">RG Solutions</span>
                 </a>
-                <div class="hidden md:flex space-x-6">
-                    <a href="#servicios" class="text-secondary hover:text-accent transition-colors">Servicios</a>
-                    <a href="#contacto" class="text-secondary hover:text-accent transition-colors">Contacto</a>
+                <div class="hidden md:flex space-x-6 nav-links">
+                    <a href="#servicios" class="nav-link">Servicios</a>
+                    <a href="#contacto" class="nav-link">Contacto</a>
                 </div>
             </div>
         </div>
@@ -96,8 +96,28 @@
             </video>
 
             <div class="hero-content" id="hero-text-content">
-                <h1 class="hero-title">Soluciones <span class="highlight">comerciales</span><br> a la medida de tu empresa</h1>
-                <p class="hero-subtitle">Conectamos marcas con sus clientes ideales a través de estrategias innovadoras y un equipo de ventas experto.</p>
+                <div class="hero-logo-container">
+                    <img src="images/Logo-RG.png" alt="RG Solutions Logo" class="hero-logo">
+                </div>
+                
+                <h1 class="hero-title">
+                    <div class="text-reveal-mask">
+                        <span class="inline-block">Transformamos</span>
+                    </div>
+                    <div class="text-reveal-mask">
+                        <span class="text-accent block mt-2">Ventas B2B</span>
+                    </div>
+                    <div class="text-reveal-mask">
+                        <span class="text-accent block mt-2">en Resultados</span>
+                    </div>
+                </h1>
+
+                <div class="hero-divider"></div>
+
+                <p class="hero-subtitle">
+                    Conectamos marcas con sus clientes ideales a través de estrategias innovadoras y un equipo de ventas experto.
+                </p>
+
                 <div class="hero-buttons">
                     <a href="#contacto" class="btn btn-primary">Contactanos</a>
                     <a href="#servicios" class="btn btn-secondary">Servicios</a>
