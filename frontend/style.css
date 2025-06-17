@@ -222,21 +222,18 @@ header {
     opacity: 0;
 }
 
-.hero-title {
-    font-size: 4rem;
-    line-height: 1.2;
-    margin-bottom: 2rem;
-    opacity: 0;
+/* Typed.js Styles */
+.typed-cursor {
+    font-size: 2em;
+    color: var(--accent-color);
+    opacity: 1;
+    animation: blink 0.7s infinite;
 }
 
-.text-reveal-mask {
-    overflow: hidden;
-    position: relative;
-}
-
-.text-reveal-mask span {
-    display: block;
-    transform: translateY(100%);
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 .hero-divider {

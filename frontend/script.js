@@ -178,7 +178,9 @@ window.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const video = document.getElementById('intro-video');
     const heroContent = document.getElementById('hero-text-content');
-    
+    let animationHasRun = false;
+    let typedInstance = null;
+
     // Crear la timeline principal
     const heroTimeline = gsap.timeline({
         paused: true,
@@ -193,7 +195,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Fade in del contenedor principal
         .to(heroContent, {
             opacity: 1,
-            duration: 0.5
+            duration: 1,
+            ease: "power2.out"
         })
         // Animación del logo
         .from('.hero-logo', {
@@ -201,14 +204,26 @@ document.addEventListener('DOMContentLoaded', function() {
             opacity: 0,
             duration: 1
         })
-        // Animación del título línea por línea
-        .from('.text-reveal-mask span', {
-            y: 100,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2,
-            ease: "power3.out"
-        }, "-=0.5")
+        // Iniciar Typed.js después de una breve pausa
+        .call(() => {
+            if (!typedInstance) {
+                typedInstance = new Typed('#typed-text', {
+                    strings: [
+                        'Transformamos Ventas B2B',
+                        'Generamos Resultados Medibles',
+                        'Potenciamos tu Crecimiento',
+                        'Innovamos en cada Estrategia'
+                    ],
+                    typeSpeed: 55,
+                    backSpeed: 30,
+                    backDelay: 2000,
+                    loop: true,
+                    showCursor: true,
+                    cursorChar: '█',
+                    smartBackspace: true
+                });
+            }
+        }, null, ">-0.5")
         // Animación de la línea decorativa
         .to('.hero-divider', {
             width: "100px",
@@ -231,6 +246,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para iniciar la animación cuando el video termine
     function startHeroAnimation() {
+        if (animationHasRun) return;
+        animationHasRun = true;
+
         // Aplicar blur al video
         video.classList.add('hero-blur');
         // Iniciar la timeline
@@ -247,6 +265,13 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Error al cargar el video');
         startHeroAnimation();
     });
+
+    // Fallback para dispositivos móviles o cuando el video está en pausa
+    setTimeout(() => {
+        if (video.paused && !animationHasRun) {
+            startHeroAnimation();
+        }
+    }, 2000);
 
     // Configuración de máximos para barras no porcentuales
     const maxClientes = 150; // Puedes ajustar este valor si el máximo cambia
