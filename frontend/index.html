@@ -223,148 +223,59 @@
         </section>
 
         <!-- Testimonios Section -->
-        <section id="testimonios" class="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
-            <!-- Elementos decorativos de fondo -->
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--accent-color)_0%,_transparent_70%)] opacity-5"></div>
-            <div class="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-5"></div>
-
-            <div class="container mx-auto px-4 relative z-10">
-                <!-- Encabezado -->
-                <div class="text-center mb-16" data-aos="fade-up">
-                    <h2 class="text-4xl md:text-5xl font-serif font-bold mb-4 text-gray-900">Testimonios y Clientes</h2>
+        <section id="testimonios" class="py-24 bg-section relative overflow-hidden">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-poppins font-bold mb-4">Nuestros Clientes</h2>
                     <div class="w-24 h-1 bg-accent mx-auto mb-6"></div>
-                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Empresas que confían en nosotros y resultados que hablan por sí mismos
+                    <p class="text-lg text-secondary max-w-2xl mx-auto">
+                        Empresas líderes que confían en nuestras soluciones
                     </p>
                 </div>
 
-                <!-- Logos de Clientes -->
-                <div class="max-w-7xl mx-auto mb-20">
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-                        <!-- Logo 1 -->
-                        <div class="client-logo" data-aos="fade-up">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" 
-                                 alt="Google" 
-                                 class="w-full h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300">
+                <div class="logos-container max-w-7xl mx-auto mb-20" data-speed="slow">
+                    <div class="logos-scroller">
+                        <div class="logos-track">
+                            <div class="client-logo">
+                                <img src="images/clientes/logo1.png" alt="Cliente 1">
+                            </div>
+                            <div class="client-logo">
+                                <img src="images/clientes/logo2.png" alt="Cliente 2">
+                            </div>
+                            <div class="client-logo">
+                                <img src="images/clientes/logo3.png" alt="Cliente 3">
+                            </div>
+                            <div class="client-logo">
+                                <img src="images/clientes/logo4.png" alt="Cliente 4">
+                            </div>
+                            <div class="client-logo">
+                                <img src="images/clientes/logo5.png" alt="Cliente 5">
+                            </div>
+                            <div class="client-logo">
+                                <img src="images/clientes/logo6.png" alt="Cliente 6">
+                            </div>
                         </div>
-                        <!-- Logo 2 -->
-                        <div class="client-logo" data-aos="fade-up" data-aos-delay="100">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1200px-IBM_logo.svg.png" 
-                                 alt="IBM" 
-                                 class="w-full h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300">
-                        </div>
-                        <!-- Logo 3 -->
-                        <div class="client-logo" data-aos="fade-up" data-aos-delay="200">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1200px-Microsoft_logo_%282012%29.svg.png" 
-                                 alt="Microsoft" 
-                                 class="w-full h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300">
-                        </div>
-                        <!-- Logo 4 -->
-                        <div class="client-logo" data-aos="fade-up" data-aos-delay="300">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Salesforce_logo.svg/1200px-Salesforce_logo.svg.png" 
-                                 alt="Salesforce" 
-                                 class="w-full h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300">
-                        </div>
-                        <!-- Logo 5 -->
-                        <div class="client-logo" data-aos="fade-up" data-aos-delay="400">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Amazon_Web_Services_Logo.svg/1200px-Amazon_Web_Services_Logo.svg.png" 
-                                 alt="AWS" 
-                                 class="w-full h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300">
-                        </div>
-                        <!-- Logo 6 -->
-                        <div class="client-logo" data-aos="fade-up" data-aos-delay="500">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Adobe_logo_%282020%29.svg/1200px-Adobe_logo_%282020%29.svg.png" 
-                                 alt="Adobe" 
-                                 class="w-full h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonios -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                    <!-- Testimonio 1 -->
-                    <div class="testimonial-card" data-aos="fade-up">
-                        <div class="relative p-8">
-                            <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-3xl"></div>
-                            <div class="relative z-10">
-                                <div class="text-6xl text-accent/20 font-serif mb-4">"</div>
-                                <p class="text-gray-600 mb-6">
-                                    La implementación de la estrategia de ventas de RG Solutions transformó 
-                                    completamente nuestro proceso comercial. Los resultados superaron nuestras 
-                                    expectativas.
-                                </p>
-                                <div class="flex items-center space-x-4">
-                                    <div class="w-12 h-12 rounded-full overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
-                                             alt="Cliente" 
-                                             class="w-full h-full object-cover">
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold text-gray-900">Carlos Rodríguez</h4>
-                                        <p class="text-sm text-gray-600">Director Comercial, TechCorp</p>
-                                    </div>
-                                </div>
+                        <div class="logos-track">
+                            <div class="client-logo">
+                                <img src="images/clientes/logo1.png" alt="Cliente 1">
+                            </div>
+                            <div class="client-logo">
+                                <img src="images/clientes/logo2.png" alt="Cliente 2">
+                            </div>
+                            <div class="client-logo">
+                                <img src="images/clientes/logo3.png" alt="Cliente 3">
+                            </div>
+                            <div class="client-logo">
+                                <img src="images/clientes/logo4.png" alt="Cliente 4">
+                            </div>
+                            <div class="client-logo">
+                                <img src="images/clientes/logo5.png" alt="Cliente 5">
+                            </div>
+                            <div class="client-logo">
+                                <img src="images/clientes/logo6.png" alt="Cliente 6">
                             </div>
                         </div>
                     </div>
-
-                    <!-- Testimonio 2 -->
-                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="relative p-8">
-                            <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-3xl"></div>
-                            <div class="relative z-10">
-                                <div class="text-6xl text-accent/20 font-serif mb-4">"</div>
-                                <p class="text-gray-600 mb-6">
-                                    El equipo de RG Solutions demostró un profundo conocimiento del mercado B2B. 
-                                    Su metodología y herramientas nos ayudaron a optimizar nuestro pipeline de ventas.
-                                </p>
-                                <div class="flex items-center space-x-4">
-                                    <div class="w-12 h-12 rounded-full overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
-                                             alt="Cliente" 
-                                             class="w-full h-full object-cover">
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold text-gray-900">Ana Martínez</h4>
-                                        <p class="text-sm text-gray-600">CEO, InnovateTech</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonio 3 -->
-                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="relative p-8">
-                            <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-3xl"></div>
-                            <div class="relative z-10">
-                                <div class="text-6xl text-accent/20 font-serif mb-4">"</div>
-                                <p class="text-gray-600 mb-6">
-                                    La capacitación y el soporte continuo de RG Solutions han sido fundamentales 
-                                    para el crecimiento de nuestro equipo comercial. Altamente recomendados.
-                                </p>
-                                <div class="flex items-center space-x-4">
-                                    <div class="w-12 h-12 rounded-full overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
-                                             alt="Cliente" 
-                                             class="w-full h-full object-cover">
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold text-gray-900">Miguel Sánchez</h4>
-                                        <p class="text-sm text-gray-600">VP de Ventas, GlobalTech</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CTA -->
-                <div class="text-center mt-16" data-aos="fade-up">
-                    <a href="#contacto" class="inline-flex items-center px-8 py-4 bg-accent text-white rounded-xl hover:bg-accent-dark transition-all duration-300 group">
-                        <span>Únete a nuestros clientes satisfechos</span>
-                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                    </a>
                 </div>
             </div>
         </section>
