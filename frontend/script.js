@@ -404,4 +404,110 @@ if (document.querySelector('.testimonial-swiper')) {
             },
         },
     });
-} 
+}
+
+// --- CONTACT FORM ANIMATIONS & VALIDATION ---
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    if (form) {
+        const name = form.querySelector('#name');
+        const email = form.querySelector('#email');
+        const phone = form.querySelector('#phone');
+        const message = form.querySelector('#message');
+        const button = form.querySelector('.submit-button');
+        const buttonText = button.querySelector('.button-text');
+        const buttonSpinner = document.createElement('span');
+        buttonSpinner.className = 'button-spinner';
+        buttonSpinner.innerHTML = `<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path></svg>`;
+        const buttonSuccess = document.createElement('span');
+        buttonSuccess.className = 'button-success';
+        buttonSuccess.innerHTML = `<svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>`;
+        const buttonError = document.createElement('span');
+        buttonError.className = 'button-error';
+        buttonError.innerHTML = `<svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>`;
+        button.querySelector('.button-content').appendChild(buttonSpinner);
+        button.querySelector('.button-content').appendChild(buttonSuccess);
+        button.querySelector('.button-content').appendChild(buttonError);
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+        // Label flotante: activar si hay valor o foco
+        form.querySelectorAll('.floating-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.classList.add('focus');
+            });
+            input.addEventListener('blur', function() {
+                if (!this.value) this.classList.remove('focus');
+            });
+            input.addEventListener('input', function() {
+                if (this.value) this.classList.add('focus');
+                else this.classList.remove('focus');
+            });
+        });
+        // Validación y feedback visual
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+        function validateForm() {
+            let valid = true;
+            [name, email, message].forEach(field => {
+                const group = field.closest('.floating-label-group');
+                const errorIcon = group.querySelector('.error-icon');
+                field.classList.remove('error');
+                errorIcon.classList.add('hidden');
+            });
+            if (!name.value.trim()) {
+                showError(name);
+                valid = false;
+            }
+            if (!email.value.trim() || !validateEmail(email.value)) {
+                showError(email);
+                valid = false;
+            }
+            if (!message.value.trim()) {
+                showError(message);
+                valid = false;
+            }
+            return valid;
+        }
+        function showError(field) {
+            const group = field.closest('.floating-label-group');
+            const errorIcon = group.querySelector('.error-icon');
+            field.classList.add('error');
+            errorIcon.classList.remove('hidden');
+            gsap.fromTo(group, {x: -8}, {x: 8, duration: 0.1, yoyo: true, repeat: 3, clearProps: 'x'});
+        }
+        form.addEventListener('input', () => {
+            button.disabled = !(name.value && email.value && message.value);
+        });
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            errorMessage.classList.remove('visible');
+            successMessage.classList.remove('visible');
+            if (!validateForm()) {
+                errorMessage.textContent = 'Por favor, corrige los campos marcados en rojo.';
+                errorMessage.classList.add('visible');
+                gsap.fromTo(errorMessage, {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5});
+                return;
+            }
+            // Estado loading
+            button.classList.add('loading');
+            button.disabled = true;
+            // Simulación de fetch (reemplaza por tu lógica real)
+            setTimeout(() => {
+                // Simula éxito
+                button.classList.remove('loading');
+                button.classList.add('success');
+                gsap.fromTo(successMessage, {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5});
+                successMessage.classList.add('visible');
+                // Animar SVG check
+                const check = document.getElementById('successCheck');
+                if (check) check.style.animation = 'drawCheck 0.8s forwards';
+                setTimeout(() => {
+                    button.classList.remove('success');
+                    button.disabled = false;
+                    form.reset();
+                }, 1800);
+            }, 1500);
+        });
+    }
+}); 

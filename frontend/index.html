@@ -579,71 +579,49 @@
                         <!-- Formulario -->
                         <div class="bg-white rounded-2xl p-8 shadow-lg" data-aos="fade-right">
                             <form id="contactForm" class="space-y-6">
-                                <!-- Nombre -->
-                                <div class="form-group">
+                                <div class="form-group floating-label-group">
                                     <div class="relative">
-                                        <input type="text" id="name" name="name" required
-                                               class="w-full px-4 py-3 pl-12 border border-gray-200 rounded-xl focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300">
-                                        <label for="name" class="absolute left-12 top-3 text-gray-500 transition-all duration-300 pointer-events-none">
-                                            Nombre completo
-                                        </label>
-                                        <i class="fas fa-user absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                        <input type="text" id="name" name="name" required class="floating-input peer" autocomplete="off" />
+                                        <label for="name" class="floating-label">Nombre completo</label>
+                                        <span class="input-icon"><i class="fas fa-user"></i></span>
+                                        <span class="error-icon hidden"><i class="fas fa-exclamation-circle"></i></span>
                                     </div>
                                 </div>
-
-                                <!-- Email -->
-                                <div class="form-group">
+                                <div class="form-group floating-label-group">
                                     <div class="relative">
-                                        <input type="email" id="email" name="email" required
-                                               class="w-full px-4 py-3 pl-12 border border-gray-200 rounded-xl focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300">
-                                        <label for="email" class="absolute left-12 top-3 text-gray-500 transition-all duration-300 pointer-events-none">
-                                            Correo electrónico
-                                        </label>
-                                        <i class="fas fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                        <input type="email" id="email" name="email" required class="floating-input peer" autocomplete="off" />
+                                        <label for="email" class="floating-label">Correo electrónico</label>
+                                        <span class="input-icon"><i class="fas fa-envelope"></i></span>
+                                        <span class="error-icon hidden"><i class="fas fa-exclamation-circle"></i></span>
                                     </div>
                                 </div>
-
-                                <!-- Teléfono -->
-                                <div class="form-group">
+                                <div class="form-group floating-label-group">
                                     <div class="relative">
-                                        <input type="tel" id="phone" name="phone" required
-                                               class="w-full px-4 py-3 pl-12 border border-gray-200 rounded-xl focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300">
-                                        <label for="phone" class="absolute left-12 top-3 text-gray-500 transition-all duration-300 pointer-events-none">
-                                            Teléfono
-                                        </label>
-                                        <i class="fas fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                                        <input type="tel" id="phone" name="phone" required class="floating-input peer" autocomplete="off" />
+                                        <label for="phone" class="floating-label">Teléfono</label>
+                                        <span class="input-icon"><i class="fas fa-phone"></i></span>
+                                        <span class="error-icon hidden"><i class="fas fa-exclamation-circle"></i></span>
                                     </div>
                                 </div>
-
-                                <!-- Mensaje -->
-                                <div class="form-group">
+                                <div class="form-group floating-label-group">
                                     <div class="relative">
-                                        <textarea id="message" name="message" rows="4" required
-                                                  class="w-full px-4 py-3 pl-12 border border-gray-200 rounded-xl focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all duration-300"></textarea>
-                                        <label for="message" class="absolute left-12 top-3 text-gray-500 transition-all duration-300 pointer-events-none">
-                                            ¿Cómo podemos ayudarte?
-                                        </label>
-                                        <i class="fas fa-comment absolute left-4 top-6 text-gray-400"></i>
+                                        <textarea id="message" name="message" rows="4" required class="floating-input peer"></textarea>
+                                        <label for="message" class="floating-label">¿Cómo podemos ayudarte?</label>
+                                        <span class="input-icon"><i class="fas fa-comment"></i></span>
+                                        <span class="error-icon hidden"><i class="fas fa-exclamation-circle"></i></span>
                                     </div>
                                 </div>
-
-                                <!-- Botón de envío -->
-                                <button type="submit" class="submit-button w-full px-8 py-4 bg-accent text-white rounded-xl hover:bg-accent-dark transition-all duration-300 group relative overflow-hidden">
-                                    <span class="relative z-10 flex items-center justify-center">
-                                        <span class="button-text">Agendar Consulta Gratuita</span>
-                                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                <div id="errorMessage" class="hidden mt-2 text-red-600 text-center text-sm"></div>
+                                <button type="submit" class="submit-button w-full px-8 py-4 bg-accent text-white rounded-xl transition-all duration-300 group relative overflow-hidden flex items-center justify-center" disabled>
+                                    <span class="button-content">
+                                        <span class="button-text">Enviar Mensaje</span>
                                     </span>
-                                    <div class="absolute inset-0 bg-accent-dark scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
                                 </button>
-                            </form>
-
-                            <!-- Mensaje de éxito -->
-                            <div id="successMessage" class="hidden mt-6 p-4 bg-green-50 text-green-700 rounded-xl">
-                                <div class="flex items-center">
-                                    <i class="fas fa-check-circle text-2xl mr-3"></i>
+                                <div id="successMessage" class="hidden mt-6 p-4 bg-green-50 text-green-700 rounded-xl flex flex-col items-center justify-center">
+                                    <svg id="successCheck" class="w-12 h-12 mb-2" fill="none" stroke="currentColor" stroke-width="4" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
                                     <p>¡Gracias por contactarnos! Nos pondremos en contacto contigo pronto.</p>
                                 </div>
-                            </div>
+                            </form>
                         </div>
 
                         <!-- Información de contacto -->
