@@ -20,11 +20,10 @@ window.addEventListener('DOMContentLoaded', function() {
                 if (!typedInstance) {
                     typedInstance = new Typed('#typed-text', {
                         strings: [
-                            'Soluciones de Contacto Avanzadas',
-                            'Automatización Inteligente',
-                            'Atención Omnicanal 24/7',
-                            'Tecnología para tu Negocio',
-                            'Experiencia de Cliente de Excelencia'
+                            'Impulsamos tu marca al siguiente nivel',
+                            'Maximizamos tus resultados comerciales',
+                            'Diseñamos estrategias de ventas a tu medida',
+                            'Ofrecemos soluciones profesionales y escalables'
                         ],
                         typeSpeed: 55,
                         backSpeed: 30,
@@ -46,11 +45,10 @@ window.addEventListener('DOMContentLoaded', function() {
                  if (!typedInstance) {
                     typedInstance = new Typed('#typed-text', {
                         strings: [
-                            'Soluciones de Contacto Avanzadas',
-                            'Automatización Inteligente',
-                            'Atención Omnicanal 24/7',
-                            'Tecnología para tu Negocio',
-                            'Experiencia de Cliente de Excelencia'
+                            'Impulsamos tu marca al siguiente nivel',
+                            'Maximizamos tus resultados comerciales',
+                            'Diseñamos estrategias de ventas a tu medida',
+                            'Ofrecemos soluciones profesionales y escalables'
                         ],
                         typeSpeed: 55,
                         backSpeed: 30,
