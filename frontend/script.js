@@ -207,10 +207,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!typedInstance) {
                 typedInstance = new Typed('#typed-text', {
                     strings: [
-                        'Transformamos Ventas B2B',
-                        'Generamos Resultados Medibles',
-                        'Potenciamos tu Crecimiento',
-                        'Innovamos en cada Estrategia'
+                        'Impulsamos tu marca al siguiente nivel',
+                        'Maximizamos tus resultados comerciales',
+                        'Diseñamos estrategias de ventas a tu medida',
+                        'Ofrecemos soluciones profesionales y escalables'
                     ],
                     typeSpeed: 55,
                     backSpeed: 30,
